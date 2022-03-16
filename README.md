@@ -35,4 +35,8 @@
 
 ## Прогоны
 ### 1-й
+#### Sample input
+#### Sample output
 ### 2-й
+#### Sample input
+#### Sample output
