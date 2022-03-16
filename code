@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cmath>
+#include <vector>
+
 using namespace std;
 
 void simple(int a) {
@@ -21,4 +24,85 @@ int main() {
  cin >> a >> b;
  simple(a);
  simple(b);
+}
+bool IsPerfect(int number) {
+	int sum = 1;
+	for (int i = 2; i < number; ++i) {
+		if (number % i == 0) {
+			sum += i;
+		}
+	}
+	if (number == sum) {
+		return true;
+	}
+	return false;
+}
+std::vector<int> Deviders(int number) {
+	std::vector<int> anwser;
+	for (int i = 2; i < number; ++i) {
+		while (number % i == 0) {
+			number /= i;
+			anwser.push_back(i);
+		}
+	}
+	anwser.push_back(number);
+	return anwser;
+}
+int NOK(int first, int second) {
+	std::vector<int> first_divs = Deviders(first);
+	std::vector<int> second_divs = Deviders(second); 
+	int anwser = first;
+	for (int i = 0; i < first_divs.size(); ++i) {
+		for (int j = 0; j < second_divs.size(); ++j) {
+			if (first_divs[i] == second_divs[j]) {
+				second_divs[j] = -1;
+				break;
+			}
+ 
+		}
+	}
+	for (int j = 0; j < second_divs.size(); ++j) { 
+		if (second_divs[j] != -1) {
+			anwser *= second_divs[j];
+		}
+	}
+	return anwser;
+}
+int NOD(int first, int second) {
+	int rem = first % second;
+	while (rem != 0) {
+		first = second;
+		second = rem;
+		rem = first % second;
+	}
+	return second;
+}
+ 
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int first;
+	int second;
+	std::cin >> first >> second;
+	std::cout << "Число " << first;
+	if (!simple(first)) {
+		std::cout << " HE";
+	}
+	std::cout << " простое" << std::endl;
+	std::cout << "Число " << first;
+	if (!IsPerfect(first)) {
+		std::cout << " HE";
+	}
+	std::cout << " совершенное" << std::endl;
+	std::cout << "Число " << second;
+	if (!simple(second)) {
+		std::cout << " HE";
+	}
+	std::cout << " простое" << std::endl;
+	std::cout << "Число " << second;
+	if (!IsPerfect(second)) {
+		std::cout << " HE";
+	}
+	std::cout << " совершенное" << std::endl;
+	std::cout << "Наибольший общий делитель =>" << NOD(first, second) << std::endl;
+	std::cout << "Наибольшее общее кратное =>" << NOK(first, second) << std::endl;
 }
