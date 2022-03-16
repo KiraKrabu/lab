@@ -11,9 +11,9 @@ void simple(int a) {
    else count += 0;
    }
  if (count > 1)
- cout << "сложное" << endl;
+ cout << "Число " << a << " НЕ простое" << endl;
  else
- cout << "простое" << endl;
+ cout << "Число "<< a << " простое" << endl;
 }
 int main() {
  int a, b;
