@@ -1,4 +1,24 @@
 #include <iostream>
 using namespace std;
+
+void simple(int a) {
+ int count;
+  count = 0;
+   for (int i = 1; i < a; i++) {
+     if (a % i == 0) {
+       count += 1;
+      }
+   else count += 0;
+   }
+ if (count > 1)
+ cout << "Число " << a << " НЕ простое" << endl;
+ else
+ cout << "Число "<< a << " простое" << endl;
+}
 int main() {
+ int a, b;
+ cout << "Введите числа: ";
+ cin >> a >> b;
+ simple(a);
+ simple(b);
 }
